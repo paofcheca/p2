@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .language-section {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .video-container, .audio-container {
+            margin: 20px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .flag {
+            width: 50px;
+            height: auto;
+        }
+        .english { background-color: #449bf3; }
+        .italian { background-color: #fba249; }
+        .chinese { background-color: #fc6d6d; }
+        .french { background-color: #86f586; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="vocabulario.html">Vocabulario</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="test.html">Test</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Recursos Multimedia</h1>
+        <p>Aprende idiomas a través de videos y audios educativos.</p>
+    </header>
+
+    <section class="media-container">
+        <div class="language-section english">
+            <h2><img src="images/bandera-uk.svg" alt="Bandera de UK" class="flag"> Inglés</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/4Ht9agqAEoo"></iframe>
+            </div>
+            <h3>Audio de pronunciación</h3>
+            <audio controls>
+                <source src="multimedia/fishing.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="language-section italian">
+            <h2><img src="images/bandera-italia.png" alt="Bandera de Italia" class="flag"> Italiano</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/EG9x0eevbV4"></iframe>
+            </div>
+            <h3>Audio de pronunciación</h3>
+            <audio controls>
+                <source src="multimedia/italiano.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="language-section chinese">
+            <h2><img src="images/bandera-china.png" alt="Bandera de China" class="flag"> Chino</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/VF9he3r4-5w"></iframe>
+            </div>
+            <h3>Audio de pronunciación</h3>
+            <audio controls>
+                <source src="multimedia/chino.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="language-section french">
+            <h2><img src="images/bandera-francia.png" alt="Bandera de Francia" class="flag"> Francés</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/mRrV-ezwaEA"></iframe>
+            </div>
+            <h3>Audio de pronunciación</h3>
+            <audio controls>
+                <source src="multimedia/frances.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Hecho por Paola Fdez-Checa Clemente, 3ºGITT+BA</p>
+    </footer>
+</body>
+</html>

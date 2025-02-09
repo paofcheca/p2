@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Vocabulario</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .options button {
+            display: block;
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: rgb(0, 128, 109);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .options button:hover {
+            background-color: #04655e;
+        }
+        .language-select {
+            text-align: center;
+            margin: 20px;
+        }
+        .language-select select {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="vocabulario.html">Vocabulario</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="test.html">Test</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Test de Vocabulario</h1>
+        <p>Responde las siguientes preguntas para evaluar tu conocimiento en idiomas.</p>
+    </header>
+
+    <div class="language-select">
+        <label for="language">Selecciona un idioma:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="english">Inglés</option>
+            <option value="french">Francés</option>
+            <option value="italian">Italiano</option>
+            <option value="chinese">Chino</option>
+        </select>
+    </div>
+
+    <section class="quiz-container" id="quiz">
+        <div class="question" id="question1"></div>
+        <div class="options" id="options1"></div>
+        <div class="question" id="question2"></div>
+        <div class="options" id="options2"></div>
+        <p id="result-message"></p>
+    </section>
+
+    <script>
+        const questions = {
+            english: [
+                { text: "How do you say 'Hola' in English?", options: ["Hello", "Goodbye", "Thank you", "Please"], correct: 0 },
+                { text: "How do you say 'Gracias' in English?", options: ["Hello", "Goodbye", "Thank you", "Please"], correct: 2 }
+            ],
+            french: [
+                { text: "Comment dit-on 'Bonjour' en espagnol?", options: ["Hola", "BUenas noches", "Adiós", "Gracias"], correct: 0 },
+                { text: "Comment dit-on 'Merci' en espagnol?", options: ["Perro", "Buenos días", "Adiós", "Gracias"], correct: 3 }
+            ],
+            italian: [
+                { text: "Come si dice 'Ciao' in spagnolo?", options: ["Gracias", "BUenas noches", "Adiós", "Hola"], correct: 0 },
+                { text: "Come si dice 'Grazie' in spagnolo?", options: ["Gracias", "BUenas noches", "Adiós", "Hola"], correct: 0 }
+            ],
+            chinese: [
+                { text: "¿Cómo se dice '你好' en español?", options: ["Hola", "Adiós", "Gracias", "De nada"], correct: 0 },
+                { text: "¿Cómo se dice '谢谢' en español?", options: ["BUenas noches", "Adiós", "Hola", "Gracias"], correct: 3 }
+            ]
+        };
+
+        function changeLanguage() {
+            let language = document.getElementById("language").value;
+            let selectedQuestions = questions[language];
+            
+            for (let i = 0; i < 2; i++) {
+                document.getElementById(`question${i+1}`).textContent = selectedQuestions[i].text;
+                let optionsContainer = document.getElementById(`options${i+1}`);
+                optionsContainer.innerHTML = "";
+                
+                selectedQuestions[i].options.forEach((option, index) => {
+                    let button = document.createElement("button");
+                    button.textContent = option;
+                    button.onclick = function() { checkAnswer(this, index === selectedQuestions[i].correct); };
+                    optionsContainer.appendChild(button);
+                });
+            }
+        }
+
+        function checkAnswer(button, isCorrect) {
+            let message = document.getElementById("result-message");
+            if (isCorrect) {
+                message.textContent = "¡Correcto!";
+                message.style.color = "green";
+            } else {
+                message.textContent = "Incorrecto, intenta de nuevo.";
+                message.style.color = "red";
+            }
+        }
+    </script>
+
+    <footer>
+        <p>&copy; Hecho por Paola Fdez-Checa Clemente, 3ºGITT+BA</p>
+    </footer>
+</body>
+</html>

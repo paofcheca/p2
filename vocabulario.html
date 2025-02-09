@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulario</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .flashcard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .flashcard {
+            width: 220px;
+            height: 160px;
+            background-color:  rgb(0, 128, 109);
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+        .flashcard:hover {
+            transform: scale(1.1);
+            background-color:  rgb(0, 128, 109);
+            text-align: center;
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .language-select {
+            text-align: center;
+            margin: 20px;
+            
+        }
+        .language-select select {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        .imagen-entre-secciones {
+            text-align: center;
+            width: 100%;
+            height: auto;
+            background-color:  rgb(0, 128, 109);
+        }
+        
+        .imagen-entre-secciones img {
+            width: 60%;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .study-section {
+            background-color:  rgb(0, 128, 109);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            min-width: 150px;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ffeb99;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="vocabulario.html">Vocabulario</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="test.html">Test</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Aprende Vocabulario</h1>
+        <p>Descubre nuevas palabras en diferentes idiomas con nuestras flashcards interactivas.</p>
+    </header>
+
+    <section class="study-section">
+        <h2>📚 Estudia el Vocabulario</h2>
+        <p class="description">Aquí tienes una tabla con palabras en español y sus traducciones a diferentes idiomas. Usa esta tabla para <em>repasar</em> antes de practicar con las flashcards.</p>
+    </section>
+
+    <div class="language-select">
+        <label for="language">Selecciona un idioma:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="english">Inglés</option>
+            <option value="french">Francés</option>
+            <option value="italian">Italiano</option>
+            <option value="chinese">Chino</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Español</th>
+                <th>Traducción</th>
+            </tr>
+        </thead>
+        <tbody id="vocab-table">
+            <tr><td>Hola</td><td>Hello</td></tr>
+            <tr><td>Gracias</td><td>Thank you</td></tr>
+            <tr><td>Adiós</td><td>Goodbye</td></tr>
+            <tr><td>Por favor</td><td>Please</td></tr>
+            <tr><td>Perro</td><td>Dog</td></tr>
+            <tr><td>Gato</td><td>Cat</td></tr>
+        </tbody>
+    </table>
+
+    <div class="imagen-entre-secciones">
+        <img src="images/cabecera.jpg" alt="Descripción de la imagen">
+    </div>
+       
+    </section>
+    <section class="flashcard-section">
+        <h2>🌍 Practica con Flashcards</h2>
+        <p class="description">Las flashcards son una excelente manera de <strong>memorizar palabras</strong> en un nuevo idioma. <u>Haz clic en cada tarjeta</u> para ver la traducción en el idioma seleccionado y vuelve a hacer clic para volver a traducir al español.</p>
+        
+        <div class="flashcard-container">
+            <div class="flashcard" data-spanish="Hola" data-english="Hello" data-french="Bonjour" data-italian="Ciao" data-chinese="你好 (Nǐ hǎo)" onclick="flipCard(this)">Hola</div>
+            <div class="flashcard" data-spanish="Gracias" data-english="Thank you" data-french="Merci" data-italian="Grazie" data-chinese="谢谢 (Xièxiè)" onclick="flipCard(this)">Gracias</div>
+            <div class="flashcard" data-spanish="Adiós" data-english="Goodbye" data-french="Au revoir" data-italian="Addio" data-chinese="再见 (Zàijiàn)" onclick="flipCard(this)">Adiós</div>
+            <div class="flashcard" data-spanish="Por favor" data-english="Please" data-french="S'il vous plaît" data-italian="Per favore" data-chinese="请 (Qǐng)" onclick="flipCard(this)">Por favor</div>
+            <div class="flashcard" data-spanish="Perro" data-english="Dog" data-french="Chien" data-italian="Cane" data-chinese="狗 (Gǒu)" onclick="flipCard(this)">Perro</div>
+            <div class="flashcard" data-spanish="Gato" data-english="Cat" data-french="Chat" data-italian="Gatto" data-chinese="猫 (Māo)" onclick="flipCard(this)">Gato</div>
+        </div>
+    </section>
+    <script>
+        function changeLanguage() {
+            let selectedLanguage = document.getElementById("language").value;
+            let tableRows = document.querySelectorAll("#vocab-table tr td:nth-child(2)");
+            let translations = {
+                "english": ["Hello", "Thank you", "Goodbye", "Please", "Dog", "Cat"],
+                "french": ["Bonjour", "Merci", "Au revoir", "S'il vous plaît", "Chien", "Chat"],
+                "italian": ["Ciao", "Grazie", "Addio", "Per favore", "Cane", "Gatto"],
+                "chinese": ["你好 (Nǐ hǎo)", "谢谢 (Xièxiè)", "再见 (Zàijiàn)", "请 (Qǐng)", "狗 (Gǒu)", "猫 (Māo)"]
+            };
+            
+            let sectionTranslations = {
+                "english": "Here you have a table with Spanish words and their translations into different languages. Use this table to review before practicing with the flashcards.",
+                "french": "Ici, vous avez un tableau avec des mots en espagnol et leurs traductions en différentes langues. Utilisez ce tableau pour réviser avant de pratiquer avec les flashcards.",
+                "italian": "Qui trovi una tabella con parole in spagnolo e le loro traduzioni in diverse lingue. Usa questa tabella per ripassare prima di esercitarti con le flashcards.",
+                "chinese": "这里有一个表格，其中包含西班牙语单词及其翻译成不同语言的内容。在使用抽认卡练习之前，请使用此表进行复习。"
+            };
+            
+            tableRows.forEach((cell, index) => {
+                cell.textContent = translations[selectedLanguage][index];
+            });
+            
+            document.getElementById("study-text").textContent = sectionTranslations[selectedLanguage];
+        }
+    </script>
+
+    <script>
+        function flipCard(card) {
+            let selectedLanguage = document.getElementById("language").value;
+            let currentLanguage = card.dataset.current;
+            if (currentLanguage === "spanish") {
+                card.textContent = card.getAttribute("data-" + selectedLanguage);
+                card.dataset.current = selectedLanguage;
+            } else {
+                card.textContent = card.getAttribute("data-spanish");
+                card.dataset.current = "spanish";
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; Hecho por Paola Fdez-Checa Clemente, 3ºGITT+BA</p>
+    </footer>
+</body>
+</html>
